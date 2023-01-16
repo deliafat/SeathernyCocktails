@@ -1,0 +1,32 @@
+﻿@page
+@model SeathernyCocktails.Pages.ContactModel
+@{
+    <h3>Contact </h3>
+    <p> <b>GET IN TOUCH AND DROP US A CUTE LINE</b></p>
+    <p>You deserve to work with the best♥</p>
+
+
+
+
+    <p>We received your following message correctly:</p>
+
+
+    <div class="container">
+        <form method="POST">
+            <label for="fname">First Name</label><br>
+            <input type="text" ID="fname" name="firstname"><br>
+
+            <label for="lname">Last Name</label><br>
+            <input type="text" ID="lname" name="lastname"><br>
+
+            <label for="message">Message</label><br>
+            <textarea ID="message" name="message" style="height:300px"></textarea><br>
+
+            <input type="submit" value="Submit">
+        </form>
+
+
+
+
+    </div>
+}

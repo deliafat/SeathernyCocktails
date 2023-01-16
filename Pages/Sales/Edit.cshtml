@@ -1,0 +1,45 @@
+﻿@page
+@model SeathernyCocktails.Pages.Sales.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Sale</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Sale.ID" />
+            <div class="form-group">
+                <label asp-for="Sale.MemberiID" class="control-label"></label>
+                <input asp-for="Sale.MemberiID" class="form-control" />
+                <span asp-validation-for="Sale.MemberiID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sale.CocktailID" class="control-label"></label>
+                <select asp-for="Sale.CocktailID" class="form-control" asp-items="ViewBag.CocktailID"></select>
+                <span asp-validation-for="Sale.CocktailID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sale.DataCumparare" class="control-label"></label>
+                <input asp-for="Sale.DataCumparare" class="form-control" />
+                <span asp-validation-for="Sale.DataCumparare" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

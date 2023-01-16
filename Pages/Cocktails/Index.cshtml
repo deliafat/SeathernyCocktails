@@ -1,0 +1,77 @@
+﻿@page
+@model SeathernyCocktails.Pages.Cocktails.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                    @Html.DisplayNameFor(model => model.Cocktail[0].Name)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cocktail[0].Price)
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.BartenderSort">
+                    @Html.DisplayNameFor(model => model.Cocktail[0].Bartender)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cocktail[0].CocktailCategories)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cocktail[0].Collection.Collect)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CocktailD.Cocktails)
+        {
+
+            string selectedRow = "";
+            if (item.ID == Model.CocktailID)
+            {
+                selectedRow = "table-success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bartender.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Collection.Collect)
+                </td>
+                <td> 
+                @{ 
+                    foreach (var category in item.CocktailCategories) 
+                    { 
+                        @category.Category.ID @: @category.Category.CategoryName <br/> 
+                    } 
+                 } 
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
